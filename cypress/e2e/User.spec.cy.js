@@ -18,7 +18,8 @@ describe('Orange HRM Test', () => {
     dateOfBirthFild:"[placeholder='yyyy-dd-mm']",
     dataCloseButton:".--close",
     buttonGender:".oxd-radio-input",
-    saveButton:"[type='submit']"
+    saveButton:"[type='submit']",
+    customFields:"[options='']"
   }
   
   it.only('User Info Update-  Success', () => {
@@ -37,13 +38,18 @@ describe('Orange HRM Test', () => {
     cy.get(selectorList.genericFild).eq(5).clear().type('test')
     cy.get(selectorList.genericFild).eq(6).clear().type('2025-10-10')
     cy.get(selectorList.dataCloseButton).click()
-    //cy.get(selectorList.NationalitySelector).eq(1).type('Brazilian')
-    //cy.get(selectorList.genericFild).eq(8).type('single')
+    cy.get(selectorList.NationalitySelector).eq(0).click()
+    cy.contains('Albanian').click()
+    cy.get(selectorList.NationalitySelector).eq(1).click()
+    cy.contains('Married').click()
     cy.get(selectorList.genericFild).eq(7).clear().type('2025-11-27')
     cy.get(selectorList.dataCloseButton).click()
     cy.get(selectorList.buttonGender).eq(0).click()
     cy.get(selectorList.saveButton).eq(0).click()
     cy.get('.oxd-toast-content')
+    cy.get(selectorList.NationalitySelector).eq(2).click()
+    cy.contains('B+').click()
+    cy.get(selectorList.customFields).clear().type('customFilds')
   })
   it('Login - Fail', () => {
     cy.visit('/auth/login')
