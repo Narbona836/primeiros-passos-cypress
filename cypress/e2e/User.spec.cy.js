@@ -8,6 +8,7 @@ const menuPage = new MenuPage()
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 
+
 describe('Orange HRM Test', () => {
 
   const selectorList = {
@@ -25,6 +26,7 @@ describe('Orange HRM Test', () => {
     buttonGender:".oxd-radio-input",
     saveButton:"[type='submit']",
     customFields:"[options='']"
+
   }
   
   it.only('User Info Update-  Success', () => {
@@ -33,7 +35,18 @@ describe('Orange HRM Test', () => {
     
     dashboardPage.checkDashboardPage()
     menuPage.accessMyInfoPage()
+    menuPage.accessAdiminPage()
     
+    menuPage.accesspPimButton()
+    menuPage.accessLeaveButton()
+    menuPage.accessTemeButton()
+    menuPage.accessRecruitmentButton()
+    menuPage.accessPerformanceButton()
+    menuPage.accessDirectoryButton()
+    menuPage.accessMaintenanceButton()
+    menuPage.accessClaimButton()
+    menuPage.accessBuzzButton()
+
   
     cy.get(selectorList.firstNameFild).clear().type('firstNameFild')
     cy.get(selectorList.midleNameFild).clear().type('midleNameFild')
